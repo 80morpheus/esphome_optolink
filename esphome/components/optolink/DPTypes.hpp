@@ -68,6 +68,13 @@ class conv2_10_F : public DPType {
   const size_t getLength() const { return 2; }
 };
 
+class conv3_10_F : public DPType {
+ public:
+  void encode(uint8_t* out, DPValue in);
+  DPValue decode(const uint8_t* in);
+  const size_t getLength() const { return 3; }
+};
+
 class conv1_1_US : public DPType {
  public:
   void encode(uint8_t* out, DPValue in);
