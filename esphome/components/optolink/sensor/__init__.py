@@ -22,7 +22,7 @@ CONFIG_SCHEMA = (
         {
             cv.GenerateID(): cv.declare_id(OptolinkSensor),
             cv.Required(CONF_ADDRESS): cv.hex_uint32_t,
-            cv.Required(CONF_BYTES): cv.one_of(1, 2, 4, int=True),
+            cv.Required(CONF_BYTES): cv.one_of(1, 2, 3, 4, int=True),
             cv.Optional(CONF_MIN_VALUE): cv.float_,
         }
     )
