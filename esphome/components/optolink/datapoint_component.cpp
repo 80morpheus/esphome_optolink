@@ -46,6 +46,14 @@ void DatapointComponent::setup_datapoint_() {
             read_retries_ = 0;
           });
           break;
+        case 3:
+          datapoint_ = new Datapoint<conv2_1_US>(get_component_name().c_str(), "optolink", address_, writeable_);
+          datapoint_->setCallback([this](const IDatapoint &dp, DPValue dp_value) {
+            ESP_LOGI(TAG, "recieved data for datapoint %s: %d", dp.getName(), dp_value.getU16());
+            datapoint_value_changed(dp_value.getU16());
+            read_retries_ = 0;
+          });
+          break;        
         case 4:
           datapoint_ = new Datapoint<conv4_1_UL>(get_component_name().c_str(), "optolink", address_, writeable_);
           datapoint_->setCallback([this](const IDatapoint &dp, DPValue dp_value) {
@@ -76,6 +84,14 @@ void DatapointComponent::setup_datapoint_() {
             read_retries_ = 0;
           });
           break;
+        case 3:
+          datapoint_ = new Datapoint<conv2_10_F>(get_component_name().c_str(), "optolink", address_, writeable_);
+          datapoint_->setCallback([this](const IDatapoint &dp, DPValue dp_value) {
+            ESP_LOGI(TAG, "recieved data for datapoint %s: %f", dp.getName(), dp_value.getFloat());
+            datapoint_value_changed(dp_value.getFloat());
+            read_retries_ = 0;
+          });
+          break;        
         default:
           unfitting_value_type_();
       }
