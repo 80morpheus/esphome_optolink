@@ -48,6 +48,17 @@ DPValue conv2_10_F::decode(const uint8_t* in) {
   return out;
 }
 
+void conv3_10_F::encode(uint8_t* out, DPValue in) {
+  int16_t tmp = floor((in.getFloat() * 10) + 0.5);
+  out[1] = tmp >> 8;
+  out[0] = tmp & 0xFF;
+}
+DPValue conv3_10_F::decode(const uint8_t* in) {
+  int16_t tmp = in[1] << 8 | in[0];
+  DPValue out(tmp / 10.0f);
+  return out;
+}
+
 void conv1_1_US::encode(uint8_t* out, DPValue in) {
   uint8_t tmp = in.getU8();
   out[0] = tmp;
