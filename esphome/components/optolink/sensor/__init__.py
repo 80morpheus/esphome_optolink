@@ -18,7 +18,7 @@ OptolinkSensor = optolink_ns.class_(
     "OptolinkSensor", sensor.Sensor, cg.PollingComponent
 )
 CONFIG_SCHEMA = (
-    //sensor.SENSOR_SCHEMA.extend(
+   
     sensor.sensor_schema().extend(
         {
             cv.GenerateID(): cv.declare_id(OptolinkSensor),
